@@ -1,0 +1,83 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<meta  name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">	
+	<style>
+	body{
+  background-image :url("{% static "images/pi.jpg" %}");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  /*height: 100%;
+  width: 100%;*/
+  text-align: left;
+  margin-top: 10%;
+  margin-left: 10%;
+  }
+
+
+  header{
+  	font-family: 'Caveat', cursive;
+  	margin-top: -5%;
+  }
+</style>
+  
+</head>
+<header>
+	<h1 class="locator">SIMPLEX  METHOD..</h1><br>
+</header>
+<body>
+
+	<div class="back-image"></div>
+	
+		
+		<div class="bg-text">
+	<form method="POST" action="{% url 'result' %}">{% csrf_token %}
+		Number of variables :<input type="text" name="variables" min="2" style="width:10%;">&nbsp;&nbsp;&nbsp;<br><br>
+	Number of constraints :<input type="text" name="constraints" min="2" style="width:10%;"><br><br>
+			<div name="main">
+				 <select name="opr">
+			    <option value="maximum">MAX</option>
+			    <option value="minimum">MIN</option>
+			  </select>&nbsp;&nbsp;
+			  <input type="text" name="main_1" value=0 style="width:10%;">&nbsp;&nbsp;x1+&nbsp;
+			  <input type="text" name="main_2" value=0 style="width:10%;">&nbsp;&nbsp;x2+&nbsp;
+			  <input type="text" name="main_3" value=0 style="width:10%;">&nbsp;&nbsp;x3 &nbsp;&nbsp;&nbsp;
+			  <br><br>
+			</div><br>
+			<p>Subject To Constraints</p>
+			<div name="cons1"> 
+			<input type="text" name="cons1_1" value=0 style="width:10%;">x1&nbsp;&nbsp;+&nbsp;
+			<input type="text" name="cons1_2" value=0 style="width:10%;">x2&nbsp;&nbsp;+&nbsp;
+			<input type="text" name="cons1_3" value=0 style="width:10%;">x3&nbsp;&nbsp;&nbsp;&#8804
+			<input type="text" name="cons1_v" value=0 style="width:10%;"> </div><br>
+
+			<div name="cons2">
+			  <input type="text" name="cons2_1" value=0 style="width:10%;">&nbsp;&nbsp;x1+&nbsp;
+			  <input type="text" name="cons2_2" value=0 style="width:10%;">&nbsp;&nbsp;x2+&nbsp;
+			  <input type="text" name="cons2_3" value=0 style="width:10%;">&nbsp;x3&nbsp;&nbsp;&nbsp;&#8804
+			  <input type="text" name="cons2_v" value=0 style="width:10%;">
+			</div><br>
+
+			<div name="cons3">
+			  <input type="text" name="cons3_1" value=0 style="width:10%;">&nbsp;&nbsp;x1+&nbsp;
+			  <input type="text" name="cons3_2" value=0 style="width:10%;">&nbsp;&nbsp;x2+&nbsp;
+			  <input type="text" name="cons3_3" value=0 style="width:10%;">&nbsp;&nbsp;x3&nbsp;&nbsp;&nbsp;&#8804
+			  <input type="text" name="cons3_v" value=0 style="width:10%;">
+			</div>
+
+			<br><br>
+			<div>
+				<input type="submit" value="submit">
+			</div>
+	</form>
+</div>
+</body>
+</html>
